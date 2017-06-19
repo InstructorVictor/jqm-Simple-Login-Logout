@@ -1,14 +1,14 @@
 ﻿(function () {
     "use strict";
+	
 	console.log("ready!");
 
 	console.log("isLoggedIn? " + localStorage.getItem("isLoggedIn"));
 
 	var $elFormSignUp = $("#formSignUp"),
-		$elFormLogIn = $("#formLogIn"),
-		$elBtnContact = $("#btnContact"),
-		$elBtnLogOut = $("#btnLogOut"),
-		$elUserEmail = $(".userEmail");
+		$elFormLogIn  = $("#formLogIn"),
+		$elBtnLogOut  = $("#btnLogOut"),
+		$elUserEmail  = $(".userEmail");
 	
 	if (localStorage.getItem("isLoggedIn") === undefined || localStorage.getItem("isLoggedIn") === null || localStorage.getItem("isLoggedIn") === "") {
 		console.log("is NOT logged in: " + localStorage.getItem("isLoggedIn"));
@@ -22,9 +22,9 @@
 		console.log("fnSignUp START");
 		event.preventDefault();
 
-		var $elInEmailSignUp = $("#inEmailSignUp"),
-			$elInPasswordSignUp = $("#inPasswordSignUp"),
-			$elInPasswordConfirmSignUp = $("#inPasswordConfirmSignUp");
+		var $elInEmailSignUp			= $("#inEmailSignUp"),
+			$elInPasswordSignUp 		= $("#inPasswordSignUp"),
+			$elInPasswordConfirmSignUp 	= $("#inPasswordConfirmSignUp");
 
 		console.log($elInEmailSignUp.val(), $elInPasswordSignUp.val(), $elInPasswordConfirmSignUp.val());
 
@@ -61,10 +61,10 @@
 		console.log("fnLogIn START");
 		event.preventDefault();
 
-		var $elInEmailLogIn = $("#inEmailLogIn"),
-			$elInPasswordLogIn = $("#inPasswordLogIn"),
-			tmpValInEmailLogIn = $elInEmailLogIn.val().toUpperCase(),
-			tmpValInPasswordLogIn = $elInPasswordLogIn.val().toUpperCase();
+		var $elInEmailLogIn 		= $("#inEmailLogIn"),
+			$elInPasswordLogIn 		= $("#inPasswordLogIn"),
+			tmpValInEmailLogIn 		= $elInEmailLogIn.val().toUpperCase(),
+			tmpValInPasswordLogIn	= $elInPasswordLogIn.val().toUpperCase();
 
 		console.log(tmpValInEmailLogIn, tmpValInPasswordLogIn);
 
@@ -76,7 +76,6 @@
 			console.log("tmpValInEmailLogIn DOES exist");
 			if (tmpValInPasswordLogIn === localStorage.getItem(tmpValInEmailLogIn)) {
 				console.log("passwords MATCH"); 
-				// Set up 2-week session persistance
 				localStorage.setItem("isLoggedIn", tmpValInEmailLogIn);
 				console.log("logged in " + localStorage.getItem("isLoggedIn")); 
 				$(":mobile-pagecontainer").pagecontainer("change", "#pgHome", { "transition": "flip" });
